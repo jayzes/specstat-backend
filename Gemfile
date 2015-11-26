@@ -3,7 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
 gem 'active_model_serializers'
+gem 'responders', '~> 2.0'
+
 gem 'puma'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'byebug'
