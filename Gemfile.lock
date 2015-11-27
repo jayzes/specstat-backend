@@ -113,6 +113,9 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    scenic (0.3.0)
+      activerecord (>= 4.0.0)
+      railties (>= 4.0.0)
     spring (1.4.4)
     sprockets (3.4.1)
       rack (> 1, < 3)
@@ -142,6 +145,7 @@ DEPENDENCIES
   rails_12factor
   responders (~> 2.0)
   rspec-rails
+  scenic
   spring
   web-console (~> 2.0)
 

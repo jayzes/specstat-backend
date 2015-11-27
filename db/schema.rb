@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127223003) do
+ActiveRecord::Schema.define(version: 20151127224022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,4 +36,21 @@ ActiveRecord::Schema.define(version: 20151127223003) do
   add_index "raw_test_runs", ["payload"], name: "index_raw_test_runs_on_payload", using: :gin
 
   add_foreign_key "raw_test_runs", "accounts"
+       create_view :test_results, sql_definition:<<-SQL
+         WITH raw_results AS (
+        SELECT jsonb_array_elements(raw_test_runs.payload) AS result,
+           raw_test_runs.account_id,
+           raw_test_runs.created_at,
+           raw_test_runs.updated_at
+          FROM raw_test_runs
+       )
+SELECT (raw_results.result ->> 'name'::text) AS name,
+   (raw_results.result ->> 'status'::text) AS status,
+   ((raw_results.result ->> 'run_time'::text))::double precision AS runtime,
+   raw_results.account_id,
+   raw_results.created_at,
+   raw_results.updated_at
+  FROM raw_results;
+       SQL
+
 end
