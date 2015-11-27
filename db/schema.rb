@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151126021332) do
+ActiveRecord::Schema.define(version: 20151127223003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(version: 20151126021332) do
   add_index "accounts", ["api_token"], name: "index_accounts_on_api_token", using: :btree
 
   create_table "raw_test_runs", force: :cascade do |t|
-    t.json     "payload"
+    t.jsonb    "payload"
     t.integer  "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "raw_test_runs", ["account_id"], name: "index_raw_test_runs_on_account_id", using: :btree
+  add_index "raw_test_runs", ["payload"], name: "index_raw_test_runs_on_payload", using: :gin
 
   add_foreign_key "raw_test_runs", "accounts"
 end
