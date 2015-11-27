@@ -1,6 +1,7 @@
 class Account < ActiveRecord::Base
 
   has_many :raw_test_runs, dependent: :destroy
+  has_many :test_results
 
   before_create :generate_api_token
 

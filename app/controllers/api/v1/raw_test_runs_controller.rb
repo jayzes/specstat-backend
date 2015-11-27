@@ -1,8 +1,4 @@
-class Api::V1::RawTestRunsController < ApplicationController
-
-  before_action :find_account
-
-  respond_to :json
+class Api::V1::RawTestRunsController < Api::V1::ApiController
 
   def create
     @raw_test_run = @account.raw_test_runs.build(payload: JSON.parse(request.body.read))
@@ -12,15 +8,5 @@ class Api::V1::RawTestRunsController < ApplicationController
       head :unprocessable_entity
     end
   end
-
-  private
-
-  def find_account
-    api_token = (request.headers['HTTP_AUTHORIZATION'] || '').gsub(/Bearer(\s*)/, '')
-    unless @account = Account.where(api_token: api_token).first
-      head :unauthorized
-    end
-  end
-
 
 end
