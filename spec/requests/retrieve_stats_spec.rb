@@ -27,9 +27,9 @@ RSpec.describe "Retrieving stats", type: :request do
 
       it "returns an array sorted by failure count" do
         get "/api/v1/stats/most_failing",
-          {},
-          { "ACCEPT" => "application/json",
-            "AUTHORIZATION" => "Bearer #{account.api_token}" }
+            {},
+            { "ACCEPT" => "application/json",
+              "AUTHORIZATION" => "Bearer #{account.api_token}" }
         expect(json_body).to eq([
           { "name" => "Test 3",
             "failure_count" => 1 },
@@ -46,9 +46,9 @@ RSpec.describe "Retrieving stats", type: :request do
     describe "with an invalid key" do
       it "responds with an unauthorized message" do
         get "/api/v1/stats/most_failing",
-          {},
-          { "ACCEPT" => "application/json",
-            "AUTHORIZATION" => "Bearer abc123" }
+            {},
+            { "ACCEPT" => "application/json",
+              "AUTHORIZATION" => "Bearer abc123" }
         expect(response).to be_unauthorized
       end
     end
@@ -56,8 +56,8 @@ RSpec.describe "Retrieving stats", type: :request do
     describe "with no supplied credentials" do
       it "responds with a 401" do
         get "/api/v1/stats/most_failing",
-          {},
-          { "ACCEPT" => "application/json" }
+            {},
+            { "ACCEPT" => "application/json" }
         expect(response).to be_unauthorized
       end
     end
@@ -69,9 +69,9 @@ RSpec.describe "Retrieving stats", type: :request do
 
       it "returns an array sorted by average runtime" do
         get "/api/v1/stats/slowest",
-          {},
-          { "ACCEPT" => "application/json",
-            "AUTHORIZATION" => "Bearer #{account.api_token}" }
+            {},
+            { "ACCEPT" => "application/json",
+              "AUTHORIZATION" => "Bearer #{account.api_token}" }
         expect(json_body).to eq([
           { "name" => "Test 3",
             "average_runtime" => 2.5 },
@@ -88,9 +88,9 @@ RSpec.describe "Retrieving stats", type: :request do
     describe "with an invalid key" do
       it "responds with an unauthorized message" do
         get "/api/v1/stats/slowest",
-          {},
-          { "ACCEPT" => "application/json",
-            "AUTHORIZATION" => "Bearer abc123" }
+            {},
+            { "ACCEPT" => "application/json",
+              "AUTHORIZATION" => "Bearer abc123" }
         expect(response).to be_unauthorized
       end
     end
@@ -98,8 +98,8 @@ RSpec.describe "Retrieving stats", type: :request do
     describe "with no supplied credentials" do
       it "responds with a 401" do
         get "/api/v1/stats/slowest",
-          {},
-          { "ACCEPT" => "application/json" }
+            {},
+            { "ACCEPT" => "application/json" }
         expect(response).to be_unauthorized
       end
     end
