@@ -4,8 +4,6 @@ ruby '2.2.2'
 
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
-gem 'active_model_serializers'
-gem 'responders', '~> 2.0'
 
 gem 'puma'
 gem 'scenic'
