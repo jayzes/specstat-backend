@@ -1,7 +1,6 @@
 class Api::V1::ApiController < ApplicationController
 
   before_action :find_account
-  respond_to :json
 
   private
 
