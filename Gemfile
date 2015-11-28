@@ -12,7 +12,7 @@ gem 'scenic'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'byebug'
+  gem 'pry-rails'
 end
 
 group :development do
