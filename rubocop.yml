@@ -1,0 +1,10 @@
+SpaceInsideBrackets:
+  Enabled: false
+EmptyLinesAroundClassBody:
+  Enabled: false
+EmptyLinesAroundModuleBody:
+  Enabled: false
+EmptyLinesAroundBlockBody:
+  Enabled: false
+ExtraSpacing:
+  Enabled: false
